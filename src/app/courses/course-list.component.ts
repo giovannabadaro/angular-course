@@ -1,34 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from './course';
+import { CourseService } from './../../../../../course-manager-master/course-manager-master/src/app/courses/course.service';
 
 @Component({
   selector: 'app-course-list',
-  templateUrl: './course-list.component.html'
+  templateUrl: './course-list.component.html',
 })
 
 export class CourseListComponent implements OnInit {
   courses: Course[] = [];
 
+  constructor(private courseService: CourseService) { }
+
   ngOnInit(): void {
-    this.courses = [
-      {
-        id: 1,
-        name: 'Angular 11',
-        imageUrl: '/assets/images/forms.png',
-        code: '746283ASD',
-        duration: 120,
-        rating: 1.5,
-        releaseDate: 'December 2019'
-      },
-      {
-        id: 2,
-        name: 'HTTP5',
-        imageUrl: '/assets/images/router.png',
-        code: '746283JAS',
-        duration: 1280,
-        rating: 1.5,
-        releaseDate: 'January 2020'
-      }
-    ]
+   this.courses = this.courseService.retrieveAll();
   }
 }
