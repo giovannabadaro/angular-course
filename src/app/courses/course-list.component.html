@@ -27,6 +27,9 @@
       <td>{{ course.releaseDate | date: 'dd/MM/yyyy'}}</td>
       <td>{{ course.rating }}</td>
       <td><app-star></app-star></td>
+      <td>
+        <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary">Editar</a>
+      </td>
     </tr>
   </tbody>
 </table>
